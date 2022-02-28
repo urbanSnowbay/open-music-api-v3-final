@@ -10,31 +10,31 @@ const {
 
 const routes = [
     {
-        method: 'POST', // CREATE
+        method: 'POST', // CREATE (Menambahkan catatan baru)
         path: '/notes',
         handler: addNoteHandler,
     },
 
     {
-        method: 'GET', // READ
+        method: 'GET', // READ (Mendapatkan seluruh catatan yang diisi)
         path: '/notes',
         handler: getAllNotesHandler,
     },
 
     {
-        method: 'GET', // READ
+        method: 'GET', // READ (Mendapatkan catatan secara spesifik)
         path: '/notes/{id}',
         handler: getNoteByIdHandler,
     },
 
     {
-        method: 'PUT', // UPDATE
+        method: 'PUT', // UPDATE (Mengubah catatan)
         path: '/notes/{id}',
         handler: editNoteByIdHandler,
     },
 
     {
-        method: 'DELETE', // DELETE
+        method: 'DELETE', // DELETE (Menghapus catatan)
         path: '/notes/{id}',
         handler: deleteNoteByIdHandler,
     },
