@@ -36,7 +36,7 @@ const addNoteHandler = (request, h) => {
     return response;
 };
 
-// Menampilkan seluruh tampilan catatan (READ)
+// Menampilkan seluruh tampilan catatan (READ) 
 const getAllNotesHandler = () => ({
     status: 'Success',
     data: {
