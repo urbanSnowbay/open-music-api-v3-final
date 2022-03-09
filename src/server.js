@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable indent */
+/* Berkas ini menampung kode untuk membuat, mengonfigurasi, dan menjalankan HTTP server menggunakan Hapi. */
 const Hapi = require('@hapi/hapi');
 const routes = require('./routes');
 
