@@ -15,6 +15,7 @@
         "no-console": "off",
         "indent": "off",
         "linebreak-style": "off",
-        "no-trailing-spaces": "off"
+        "no-trailing-spaces": "off",
+        "max-len": "off"
     }
 }
