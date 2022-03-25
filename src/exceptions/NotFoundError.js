@@ -1,3 +1,5 @@
+// NotFoundError (extends dari ClientError) : Custom error yang mengindikasikan eror karena resource yang diminta client tidak ditemukan.
+
 const ClientError = require('./ClientError');
 
 class NotFoundError extends ClientError {
