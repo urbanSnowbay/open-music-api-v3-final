@@ -11,13 +11,21 @@ exports.up = (pgm) => {
             type: 'TEXT',
             notNull: true,
         },
-        body: {
+        year: {
+            type: 'INTEGER',
+            notNull: true,
+        },
+        performer: {
             type: 'TEXT',
             notNull: true,
         },
-        tags: {
-            type: 'TEXT[]',
-            notNull: true,
+        genre: {
+            type: 'TEXT',
+            notNull: false,
+        },
+        duration: {
+            type: 'INTEGER',
+            notNull: false,
         },
         created_at: {
             type: 'TEXT',
@@ -31,5 +39,5 @@ exports.up = (pgm) => {
 };
 
 exports.down = (pgm) => {
-    pgm.dropTable('notes');
+    pgm.dropTable('songs');
 };
