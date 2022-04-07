@@ -1,32 +1,32 @@
 const routes = (handler) => [
     {
         method: 'POST',
-        path: '/notes',
-        handler: handler.postSongHandler, // postSongHandler hanya menerima dan menyimpan "satu" note.
+        path: '/songs',
+        handler: handler.postSongHandler, // postSongHandler hanya menerima dan menyimpan "satu" songs.
     },
 
     {
         method: 'GET',
-        path: '/notes',
-        handler: handler.getSongsHandler, // getSongsHandler mengembalikan "banyak" note.
+        path: '/songs',
+        handler: handler.getSongsHandler, // getSongsHandler mengembalikan "banyak" songs.
     },
 
     {
         method: 'GET',
-        path: '/notes/{id}',
-        handler: handler.getSongByIdHandler, // getNoteByIdHandler mengembalikan "satu" note.
+        path: '/songs/{id}',
+        handler: handler.getSongByIdHandler, // getSongByIdHandler mengembalikan "satu" songs.
     },
 
     {
         method: 'PUT',
-        path: '/notes/{id}',
-        handler: handler.putSongByIdHandler, // putSongByIdHandler hanya menerima dan mengubah "satu" note.
+        path: '/songs/{id}',
+        handler: handler.putSongByIdHandler, // putSongByIdHandler hanya menerima dan mengubah "satu" songs.
     },
 
     {
         method: 'DELETE',
-        path: '/notes/{id}',
-        handler: handler.deleteSongByIdHandler, // deleteSongByIdHandler hanya menerima dan menghapus "satu" note.
+        path: '/songs/{id}',
+        handler: handler.deleteSongByIdHandler, // deleteSongByIdHandler hanya menerima dan menghapus "satu" songs.
     },
 ];
 

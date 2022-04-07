@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 const { nanoid } = require('nanoid');
 const InvariantError = require('../../exceptions/InvariantError');
-const { mapDBToModelSong } = require('../../utils');
+// const { mapDBToModelSong } = require('../../utils');
 const NotFoundError = require('../../exceptions/NotFoundError');
 
 class SongsService {
@@ -9,11 +9,11 @@ class SongsService {
         this._pool = new Pool();
     }
 
-    async addSong({
-        title, year, genre, performer, duration, albumId,
+    async addSong({ 
+        title, year, genre, performer, duration, albumId, 
     }) {
-        const id = nanoid(16);
-    
+        const id = `song-${nanoid(16)}`;
+
     // Selanjutnya buat objek query untuk memasukan notes baru ke database seperti ini.
         const query = {
             text: 'INSERT INTO songs VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING id',
@@ -35,7 +35,7 @@ class SongsService {
         // Di dalamnya kita dapatkan data songs yang ada di database dengan query “SELECT id, title, performer FROM songs.
         const result = await this._pool.query('SELECT * FROM songs');
         // Kembalikan fungsi getNotes dengan nilai result.rows yang telah di mapping dengan fungsi mapDBToModel.
-        return result.rows.map(mapDBToModelSong);
+        return result.rows;
     }
 
     async getSongById(id) {
@@ -43,6 +43,7 @@ class SongsService {
             text: 'SELECT * FROM songs WHERE id = $1',
             values: [id],
         };
+
         const result = await this._pool.query(query);
 
         // Kemudian periksa nilai result.rows, bila nilainya 0 (false) maka bangkitkan NotFoundError
@@ -51,15 +52,15 @@ class SongsService {
         }
 
         // Bila tidak, maka kembalikan dengan result.rows[0] yang sudah di-mapping dengan fungsi mapDBToModel.
-        return result.rows.map(mapDBToModelSong)[0];
+        return result.rows[0];
     }
 
     async editSongById(id, { 
-        title, year, genre, performer, duration, albumId, 
+        title, year, genre, performer, duration, albumId,
     }) {
         // lakukan query untuk mengubah note di dalam database berdasarkan id yang diberikan.
         const query = {
-            text: 'UPDATE songs SET title = $1, year = $2, genre = $3, performer = $4, duration = $5, albumId = $6 WHERE id = $7 RETURNING id',
+            text: 'UPDATE songs SET title = $1, year = $2, genre = $3, performer = $4, duration = $5, "albumId" = $6 WHERE id = $7 RETURNING id',
             values: [title, year, genre, performer, duration, albumId, id],
         };
 
