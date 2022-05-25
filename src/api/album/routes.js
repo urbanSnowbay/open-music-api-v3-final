@@ -22,6 +22,21 @@ const routes = (handler) => [
         path: '/albums/{id}',
         handler: handler.deleteAlbumByIdHandler, // deleteAlbumByIdHandler hanya menerima dan menghapus "satu" Album.
     },
+
+    {
+        method: 'POST',
+        path: '/albums/{id}/likes',
+        handler: handler.postLikeAlbumsHandler,
+        options: {
+            auth: 'openmusicsapp_jwt',
+        },
+    },
+
+    {
+        method: 'GET',
+        path: '/albums/{id}/likes',
+        handler: handler.getLikeAlbumsHandler,
+    },
 ];
 
 module.exports = routes;

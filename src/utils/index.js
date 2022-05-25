@@ -1,5 +1,12 @@
 /* eslint-disable camelcase */
-const mapDBToModelAlbum = ({ id, name, year }) => ({ id, name, year });
+const mapDBToModelAlbum = ({ 
+    id, name, year, coverUrl, 
+}) => ({ 
+    id,
+    name, 
+    year, 
+    coverUrl, 
+});
 
 const mapDBToModelSong = ({
     id,

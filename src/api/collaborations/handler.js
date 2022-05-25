@@ -1,11 +1,11 @@
 const ClientError = require('../../exceptions/ClientError');
 
-class CollaborationHandler {
-    constructor(collaborationsService, validator, usersService, playlistsService) {
+class CollaborationsHandler {
+    constructor(collaborationsService, usersService, playlistsService, validator) {
         this._collaborationsService = collaborationsService;
-        this._validator = validator;
         this._usersService = usersService;
         this._playlistsService = playlistsService;
+        this._validator = validator;
 
         this.postCollaborationHandler = this.postCollaborationHandler.bind(this);
         this.deleteCollaborationHandler = this.deleteCollaborationHandler.bind(this);
@@ -67,6 +67,17 @@ class CollaborationHandler {
                 message: 'Kolaborasi berhasil dihapus',
             };
         } catch (error) {
+            if (error instanceof ClientError) {
+                const response = h.response({
+                    status: 'error',
+                    message: 'Maaf, terjadi kegagalan pada server kami.',
+                });
+                response.code(500);
+                console.log(error);
+                return response;
+            }
+
+            // SERVER ERROR!
             const response = h.response({
                 status: 'error',
                 message: 'Maaf, terjadi kegagalan pada server kami.',
@@ -78,4 +89,4 @@ class CollaborationHandler {
     }
 }
 
-module.exports = CollaborationHandler;
+module.exports = CollaborationsHandler;
